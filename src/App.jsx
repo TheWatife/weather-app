@@ -8,7 +8,7 @@ function App() {
     //   <div className="h-[200vh]">Scroll Me</div>
     // </div>
     <UserProvider>
-      <div className="bg-neutral-900 min-h-screen px-12 py-10">
+      <div className="bg-neutral-900 min-h-screen px-12 py-10 max-md:px-15 max-xss:px-6 max-xss:py-7">
         <Navbar />
         <ErrorOrNot />
       </div>

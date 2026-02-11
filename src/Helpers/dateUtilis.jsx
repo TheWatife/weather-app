@@ -6,7 +6,7 @@ export function orderedDailyIndices(dates = []) {
   const pad = (n) => String(n).padStart(2, "0");
   const today = new Date();
   const todayStr = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(
-    today.getDate()
+    today.getDate(),
   )}`;
 
   const startIndex = dates.findIndex((d) => d === todayStr);
@@ -14,7 +14,7 @@ export function orderedDailyIndices(dates = []) {
 
   return Array.from(
     { length: dates.length },
-    (_, i) => (startIndex + i) % dates.length
+    (_, i) => (startIndex + i) % dates.length,
   );
 }
 

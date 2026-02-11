@@ -18,27 +18,32 @@ export default function Units() {
         onClick={() => {
           setUnitClick(!unitClick);
         }}
-        className="flex gap-2 bg-neutral-800 rounded-xl py-2 px-4"
+        className={`flex gap-2 bg-neutral-800 rounded-xl py-2 px-4 max-xss:px-2 max-xss:py-1 max-xss:rounded-lg
+         ${unitClick ? "outline-2 outline-offset-2 outline-neutral-100" : " "} `}
       >
-        <img src="images/icon-units.svg" />
-        <p className="text-neutral-100">Units</p>
-        <img src="images/icon-dropdown.svg" />
+        <img className="max-xs:w-[10px]" src="images/icon-units.svg" />
+        <p className="text-neutral-100 max-lgg:text-sm max-sm:text-[12px] max-xss:text-[10px]">
+          Units
+        </p>
+        <img className="max-xs:w-[8px]" src="images/icon-dropdown.svg" />
       </div>
       {unitClick && (
-        <div className="absolute mt-5 right-11 z-10 border-1 w-[18vw] border-neutral-600 rounded-xl pt-0 px-3 pb-5 bg-neutral-800">
-          <h1 className="text-neutral-100">Switch to {tempSystem}</h1>
+        <div className="absolute mt-5 right-11 max-xss:right-5 z-10 border-1 w-[18vw] max-lg:w-[20vw] max-md:w-[30vw] max-xss:w-[45vw] pt-3  border-neutral-600 rounded-xl pt-0 px-3 pb-5 bg-neutral-800">
+          <h1 className="text-neutral-100 max-xss:text-[13px]">
+            Switch to {tempSystem}
+          </h1>
           {Object.entries(unitSystem).map(([paramKey, paramValue]) => {
             console.log(paramKey);
 
             console.log(paramValue);
             return (
               <div key={paramKey}>
-                <p className="text-neutral-300 mt-3 pl-2 border-top-3">
+                <p className="text-neutral-300 mt-3 pl-2 border-top-3 max-sm:text-sm">
                   {paramValue.label}
                 </p>
 
                 <p>
-                  {paramValue.values.map((units, i) => {
+                  {paramValue.values.map((units) => {
                     function changeUnit(item) {
                       setSelectedUnit(item);
                       setTempSystem(item);
@@ -48,13 +53,20 @@ export default function Units() {
                     return (
                       <div
                         onClick={() => changeUnit(units.key)}
-                        className={`text-neutral-100 cursor-pointer px-2 my-1 ${
-                          selectedUnit === i && "bg-neutral-700 rounded-lg p-2"
-                        }`}
+                        className={`text-neutral-100 cursor-pointer px-2 my-1 max-md:text-sm 
+                        ${units.key === tempSystem ? "bg-neutral-700 rounded-xl px-3 py-2" : ""}`}
                         key={units.key}
                       >
-                        <p>{units.label}</p>
-                        <p>{units.unit}</p>
+                        <p className="max-lg:text-md">{units.label}</p>
+                        <div className="flex justify-between">
+                          <p className="max-lg:text-sm">{units.unit}</p>
+                          {units.key === tempSystem && (
+                            <img
+                              src="images/icon-checkmark.svg"
+                              alt="checkmark-icon"
+                            />
+                          )}
+                        </div>
                       </div>
                     );
                   })}

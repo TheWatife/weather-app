@@ -15,6 +15,13 @@
   --color-blue-500: hsl(233, 67%, 56%);
   --color-blue-700: hsl(248, 70%, 36%);
 
+  --breakpoint-xss: 450px;
+  --breakpoint-xs: 550px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-lgg: 1250px;
+  --breakpoint-xl: 1280px;
   /* --cards: "border-2 border-neutral-600 bg-neutral-800 rounded-xl"; */
 }
 

@@ -4,6 +4,14 @@ import Error from "./Error";
 import WeatherUI from "./WeatherUI";
 
 export default function ErrorOrNot() {
-  const { data } = useContext(UserLocation);
-  return <div>{data ? <WeatherUI /> : <Error />}</div>;
+  const { geocodingAPI } = useContext(UserLocation);
+  return (
+    <div>
+      {geocodingAPI?.isError && !geocodingAPI?.isSuccess ? (
+        <Error />
+      ) : (
+        <WeatherUI />
+      )}
+    </div>
+  );
 }
